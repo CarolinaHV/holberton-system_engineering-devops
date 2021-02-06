@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This script displays the content of the current directory
+# In a list format cut the number of file
+
+for ((i = 0; i < 1; i++));
+do
+    find ./* | cut -d "-" -f 2 | cut -d "/" -f 2
+done
