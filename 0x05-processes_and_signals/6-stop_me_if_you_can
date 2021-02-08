@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This Bash script displays To infinity and beyond indefinitely.
+# In between each iteration of the loop, sleep 2 sesconds
+
+pkill -15 -f 4-to_infinity_and_beyond
