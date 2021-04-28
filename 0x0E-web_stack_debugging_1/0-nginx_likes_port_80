@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+chmod 777 /etc/nginx/nginx.conf
+chown nginx /etc/nginx -R
+sed -i 's/80/8080g' /etc/nginx/site-available/default
+sudo -u nginx service nginx restart
