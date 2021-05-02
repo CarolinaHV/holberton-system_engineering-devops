@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#install load balancer
+apt-get -y install software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-1.5
+apt-get -y update
+apt-get -y install haproxy=1.5.\*
+echo "frontend front
+        bind *:80
+        mode http
+        default_backend back
+backend back
+        mode http
+        balance roundrobin
+        server 2008-web-01 54.87.135.177:80 check
+        server 2008-web-02 18.206.212.126:80 check" >> /etc/haproxy/haproxy.cfg
+service haproxy restart

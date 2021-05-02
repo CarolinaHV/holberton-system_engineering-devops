@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Configure Nginx so that its HTTP response contains
+# a custom header (on web-01 and web-02)
+
+
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo ufw enable
+sudo ufw allow 'Nginx HTTP'
+echo "Holberton School" > /var/www/html/index.html
+sudo service nginx start
+new_brand="server_name _;\n\trewrite ^\/redirect_me return 301 \/ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
+sed -i "s/server_name _;/$new_brand/" /etc/nginx/sites-availables/default
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/xyz.html
+sed -i "/server_name _/a add_header X-Served-By \"$HOSTNAME\";" /etc/nginx/sites-available/default
+err="error_page 404 /xyz.html;\nlocation = /xyz.html {\nroot /usr/share/nginx/html;\ninternal;\n}"
+sed -i "/server_name _/a $err" /etc/nginx/sites-available/default
+service nginx restart
