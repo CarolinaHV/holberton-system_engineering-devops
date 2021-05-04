@@ -5,12 +5,9 @@
 
 sudo apt-get update
 sudo apt-get install -y nginx
-sudo ufw enable
 sudo ufw allow 'Nginx HTTP'
-echo "Holberton School" > /var/www/html/index.html
-sudo service nginx start
-new_brand="server_name _;\n\trewrite ^\/redirect_me return 301 \/ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "s/server_name _;/$new_brand/" /etc/nginx/sites-availables/default
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/xyz.html
-sed -i "s/#error_page 404/error_page 404/" /etc/nginx/sites-available/default
+echo "Holberton School for the win" > /var/www/html/index.html
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo sed -i '/listen 80 default_server/a error_page 404 /404.html;' /etc/nginx/sites-available/default
 sudo service nginx restart
