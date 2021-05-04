@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 # This sccript redirection must be a “301 Moved Permanently”
 
-sudo apt-get update
-sudo apt-get install -y nginx
-sudo ufw enable
-sudo ufw allow 'nginx HTTP'
+sudo apt update
+sudo apt install -y nginx
+sudo ufw allow 'Nginx HTTP'
 echo "Holberton School" > /var/www/html/index.html
-sudo service nginx start
-new_brand="server_name _;\n\trewrite ^\/redirect_me return 301 \/ https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;"
-sed -i "s/server_name _;/$new_brand/" /etc/nginx/sites-availables/default
+sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
 sudo service nginx restart
