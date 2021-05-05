@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# write a Bash script with the minimum number of commands to automate your fix.
 chmod 777 /etc/nginx/nginx.conf
 chown nginx /etc/nginx -R
 sed -i 's/80/8080g' /etc/nginx/site-available/default
