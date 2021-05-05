@@ -3,6 +3,7 @@
 
 pkill apache2
 chmod 777 /etc/nginx/nginx.conf
-chown nginx /etc/nginx -R
-sed -i 's/80/8080/g' /etc/nginx/sites-available/default
-sudo -c nginx service nginx restart
+chown nginx /etc/nginx/nginx.conf -R
+sed -i 's/80/8080/' /etc/nginx/sites-available/default
+sed -i 's/#user www-data;/user nginx;/g' /etc/nginx/nginx.conf
+sudo -u nginx service nginx restart
