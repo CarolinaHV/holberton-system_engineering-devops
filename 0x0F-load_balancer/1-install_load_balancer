@@ -11,6 +11,6 @@ echo "frontend front
 backend back
         mode http
         balance roundrobin
-        server 2008-web-01 54.87.135.177:80 check
-        server 2008-web-02 18.206.212.126:80 check" >> /etc/haproxy/haproxy.cfg
+        server 2008-web-01 35.185.94.34:80 check
+        server 2008-web-02 3.91.70.36:80 check" >> /etc/haproxy/haproxy.cfg
 service haproxy restart
