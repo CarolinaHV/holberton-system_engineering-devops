@@ -3,9 +3,8 @@
 Finds the number of subscribers in a subreddit
 
 """
-
-
 import requests
+
 
 def number_of_subscribers(subreddit):
     header = {'User-Agent':  'Chrome/91.0.4472.77 Safari/537.36'}
